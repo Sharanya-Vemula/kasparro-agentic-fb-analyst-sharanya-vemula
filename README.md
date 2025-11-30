@@ -176,6 +176,24 @@ Data Analytics • Marketing Intelligence • Agentic AI Systems
 
 # 13. LICENSE
 ```
+This project is licensed under the **MIT License** for the purposes of:
+
+-  Academic evaluation  
+-  Technical assessment  
+-  Learning & reproducibility  
+-  Portfolio demonstration  
+
+You are permitted to:
+- Use
+- Modify
+- Distribute
+
+with proper attribution to the original author.
+
+> This license ensures compliance with the assignment’s requirements for **reproducibility, evaluation, and public submission**.
+
+© 2025 Sharanya Vemula. All rights reserved.
+```
 
 
 
