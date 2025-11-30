@@ -58,29 +58,56 @@ min_impressions: 1000
 ```
 # 4. PROJECT STRUCTURE
 ```
-kasparro-agentic-fb-analyst-sharanya-vemula/
+ kasparro-agentic-fb-analyst-sharanya-vemula/
 │
 ├── data/
-│   ├── sample_fb_ads.csv
-│   └── synthetic_fb_ads_undergarments.csv
+│   ├── sample_fb_ads.csv                   # Small reproducible dataset (for evaluation)
+│   └── synthetic_fb_ads_undergarments.csv  # Full dataset (optional production run)
 │
-├── reports/
-│   ├── insights.json
-│   ├── creatives.json
-│   └── report.md
-│
-├── logs/
-│   └── events.jsonl
+├── config/
+│   └── config.yaml                         # Seed, thresholds, mode (sample/full)
 │
 ├── src/
-│   ├── run.py
-│   ├── analyzer.py
-│   ├── creative_engine.py
-│   └── report_builder.py
+│   ├── run.py                              # Main CLI entry point
+│   │
+│   ├── orchestrator/
+│   │   └── runner.py                      # Controls full agent pipeline
+│   │
+│   ├── agents/
+│   │   ├── planner.py                     # Task decomposition agent
+│   │   ├── data_agent.py                  # Data loading + KPI aggregation
+│   │   ├── insight_agent.py               # ROAS & CTR hypothesis generator
+│   │   ├── evaluator.py                   # Quantitative hypothesis validation
+│   │   └── creative_generator.py          # Creative recommendation generator
+│   │
+│   └── utils/
+│       ├── data_loader.py                 # CSV loader + column validation
+│       ├── metrics.py                     # ROAS, CTR, and segment metrics
+│       └── logging_utils.py               # JSON execution logger
 │
-├── config.yaml
-├── requirements.txt
-└── README.md
+├── prompts/
+│   ├── planner_prompt.md                  # Planner reasoning prompt
+│   ├── insight_prompt.md                  # Insight generation prompt
+│   ├── evaluator_prompt.md                # Validation logic prompt
+│   └── creative_prompt.md                 # Creative generation prompt
+│
+├── reports/
+│   ├── insights.json                      # Hypotheses + confidence + evidence
+│   ├── creatives.json                     # New creative recommendations
+│   └── report.md                          # Final marketer-facing summary report
+│
+├── logs/
+│   └── events.jsonl                       # Full agent execution trace
+│
+├── tests/
+│   └── test_evaluator.py                  # Unit test for hypothesis validation
+│
+├── make_sample.py                         # One-time script to generate sample dataset
+├── requirements.txt                       # Pinned Python dependencies
+├── LICENSE                                # MIT License (academic & evaluation use)
+├── README.md                              # Project documentation
+└── venv/                                  # Local virtual environment
+
 ```
 # 5. EXACT COMMAND USED TO PRODUCE SUBMITTED OUTPUTS
 ```
