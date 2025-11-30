@@ -1,0 +1,21 @@
+python: "3.10"
+random_seed: 42
+confidence_min: 0.6
+use_sample_data: true
+
+data:
+  full_csv_path: "data/synthetic_fb_ads_undergarments.csv"
+  sample_csv_path: "data/sample_fb_ads.csv"
+
+reports:
+  output_dir: "reports"
+
+logs:
+  output_dir: "logs"
+
+analysis:
+  lookback_days: 7          # last window length
+  prev_window_days: 7       # previous window length
+  low_ctr_threshold: 0.01   # low CTR flag
+  min_impressions_for_eval: 1000
+  fatigue_lookback_days: 21  # for audience fatigue analysis
